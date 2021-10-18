@@ -3,6 +3,7 @@ package nl.hendriks.eindproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +14,6 @@ public class MainActivity extends AppCompatActivity {
         //test
         //test 222
         //test ebola
-
+        Toast.makeText(MainActivity.this, "Firebase connection succesful", Toast.LENGTH_LONG).show();
     }
 }
