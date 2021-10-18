@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">EindProject</string>
-    <string name="Inlogscherm">Inlogscherm</string>
+    <string name="app_name">Login</string>
+    <string name="Inlogscherm">Login screen</string>
+    <string name="UsernameField">Username...</string>
+    <string name="InlogButton">Login</string>
+    <string name="RegistreerButton">Register</string>
 </resources>
