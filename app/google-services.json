@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673899671809",
+    "project_id": "androidapplicatie-261eb",
+    "storage_bucket": "androidapplicatie-261eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673899671809:android:2e831179e7a5e7a0946b00",
+        "android_client_info": {
+          "package_name": "nl.hendriks.eindproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673899671809-4vj95sqga5fdg75pqt2ls42j3ep0ce23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFr_9iYIYi_1KzZtO2luBqHM5uLD7z2eQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673899671809-4vj95sqga5fdg75pqt2ls42j3ep0ce23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
