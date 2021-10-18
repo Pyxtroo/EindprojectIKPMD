@@ -4,4 +4,9 @@
     <string name="UsernameField">Username...</string>
     <string name="InlogButton">Login</string>
     <string name="RegistreerButton">Register</string>
+    <string name="EmailInput">Email...</string>
+    <string name="WachtwoordInput">Password...</string>
+    <string name="HerhaalWachtwoord">Repeat Password...</string>
+    <string name="GoBack">Go back</string>
+    <string name="Register">Register</string>
 </resources>
