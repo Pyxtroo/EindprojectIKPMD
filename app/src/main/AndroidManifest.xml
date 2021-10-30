@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EindProject">
         <activity
+            android:name=".AddGoalsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GoalsActivity"
+            android:exported="true" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity

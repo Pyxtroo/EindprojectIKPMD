@@ -21,4 +21,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, RegisterActivity.class);
         startActivity(i);                           // laad pagina i
     }
+
+    public void loadtest(View x){
+        Intent i = new Intent(this, GoalsActivity.class);
+        startActivity(i);
+    }
 }
