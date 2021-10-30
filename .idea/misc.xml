@@ -3,14 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14736842105263157" />
+        <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14736842105263157" />
+        <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/layout/activity_add_goals.xml" value="0.19157608695652173" />
+        <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/layout/activity_doelen.xml" value="0.18614130434782608" />
+        <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/layout/activity_goals.xml" value="0.19157608695652173" />
         <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/layout/activity_register.xml" value="0.176" />
         <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/layout/register_activity.xml" value="0.21403508771929824" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/EindProject2/app/src/main/res/layout/activity_home.xml" value="0.23550724637681159" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/EindProject2/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/EindProject2/app/src/main/res/layout/activity_register.xml" value="0.23550724637681159" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/EindProject2/app/src/main/res/layout/activity_register2.xml" value="0.23550724637681159" />
-        <entry key="..\:/Users/thoma/AndroidStudioProjects/EindProject2/app/src/main/res/layout/fragment_second.xml" value="0.23550724637681159" />
+        <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/layout/rij_add_goal.xml" value="0.1337719298245614" />
+        <entry key="..\:/Users/Martin Veltman/AndroidStudioProjects/EindprojectIKPMD/app/src/main/res/layout/row_goal.xml" value="0.1743659420289855" />
+        <entry key="..\:/Users/thoma/AndroidStudioProjects/EindProject2/app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
   </component>

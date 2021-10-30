@@ -17,4 +17,15 @@
     <string name="HerhaalWachtwoord">Repeat Password...</string>
     <string name="GoBack">Go back</string>
     <string name="Register">Register</string>
+    <string name="DoelToevoegen">Doel Toevoegen</string>
+
+    <string-array name="Repeat_Goal">
+        <item>Elk uur</item>
+        <item>Elke dag</item>
+        <item>Elke 2 dagen</item>
+        <item>Elke 5 dagen</item>
+        <item>Elke week</item>
+        <item>Elke maand</item>
+        <item>Niet</item>
+    </string-array>
 </resources>
