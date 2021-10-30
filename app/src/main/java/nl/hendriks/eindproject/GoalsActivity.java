@@ -1,23 +1,31 @@
 package nl.hendriks.eindproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class GoalsActivity extends AppCompatActivity {
 
+    RecyclerView recyclerGoals;
+    ArrayList<Goal> GoalsList = new ArrayList<>();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goals);
-    }
+        setContentView(R.layout.activity_doelen);
 
-    public void loadAddGoalsScreen(View v){
-        System.out.println("test method");
-        Intent i = new Intent(this, AddGoalsActivity.class);
-        startActivity(i);                           // laad pagina i
-    }
+        recyclerGoals = findViewById(R.id.recycler_doelen);
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        recyclerGoals.setLayoutManager(layoutManager);
+
+        GoalsList = (ArrayList<Goal>) getIntent().getExtras().getSerializable("list");
+
+        recyclerGoals.setAdapter(new GoalAdapter(GoalsList));
+
+    }
 }

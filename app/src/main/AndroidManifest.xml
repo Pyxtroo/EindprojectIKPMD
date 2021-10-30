@@ -13,7 +13,7 @@
             android:name=".AddGoalsActivity"
             android:exported="true" />
         <activity
-            android:name=".GoalsActivity"
+            android:name=".AddGoalActivity"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
@@ -26,7 +26,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
+
+        <activity android:name=".GoalsActivity"></activity>
+
+
     </application>
 
 </manifest>
