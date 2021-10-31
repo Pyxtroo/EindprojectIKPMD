@@ -98,4 +98,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, RegisterActivity.class);
         startActivity(i);                           // laad pagina i
     }
+
+    public void LoadAddGoalActivity(View x){
+        Intent i = new Intent(this, AddGoalActivity.class);
+        startActivity(i);
+    }
 }

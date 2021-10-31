@@ -47,10 +47,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-    public void loadAddGoalsScreen(View v){
-        Intent i = new Intent(this, AddGoalsActivity.class);
-        startActivity(i);                           // laad pagina i
-    }
+
 
     @Override
     public void onClick(View view) {
