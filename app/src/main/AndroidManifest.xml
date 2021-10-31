@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EindProject">
-        <activity
-            android:name=".AddGoalsActivity"
-            android:exported="true" />
+
         <activity
             android:name=".AddGoalActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Doel toevoegen"/>
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Registeren"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -30,7 +30,9 @@
 
         </activity>
 
-        <activity android:name=".GoalsActivity"></activity>
+        <activity
+            android:name=".GoalsActivity"
+            android:label="Doelen"></activity>
 
 
     </application>

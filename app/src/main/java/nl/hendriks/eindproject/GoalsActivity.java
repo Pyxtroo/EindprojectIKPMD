@@ -1,6 +1,8 @@
 package nl.hendriks.eindproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,5 +29,10 @@ public class GoalsActivity extends AppCompatActivity {
 
         recyclerGoals.setAdapter(new GoalAdapter(GoalsList));
 
+    }
+
+    public void LoadAddGoalActivity(View x){
+        Intent i = new Intent(this, AddGoalActivity.class);
+        startActivity(i);
     }
 }
