@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(MainActivity.this, "user logged in succesful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, test.class));
+                        startActivity(new Intent(MainActivity.this, AddGoalActivity.class));
 
                     }else{
                         Toast.makeText(MainActivity.this, "user loggin failed", Toast.LENGTH_SHORT).show();
