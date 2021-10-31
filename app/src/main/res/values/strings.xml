@@ -12,6 +12,7 @@
     <string name="DoelToevoegen">Doel Toevoegen</string>
 
     <string-array name="Repeat_Goal">
+        <item>Herhalen</item>
         <item>Elk uur</item>
         <item>Elke dag</item>
         <item>Elke 2 dagen</item>
@@ -20,6 +21,8 @@
         <item>Elke maand</item>
         <item>Niet</item>
     </string-array>
+
+
     <string name="title_activity_email_password">EmailPasswordActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/white"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:backgroundTint="#BEC3BF"
+    app:cardBackgroundColor="@color/white">
 
     <LinearLayout
-        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:backgroundTint="#FFFFFF"
+        android:padding="10dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/text_goal_name"
-            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cricketer Name"
-            android:textSize="18sp"
-            android:textColor="@color/black"></TextView>
+            android:layout_marginLeft="5dp"
+            android:text="Goal Name"
+            android:textColor="@color/black"
+            android:textSize="18sp"></TextView>
+
 
         <TextView
             android:id="@+id/text_goal_frequency"
-            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Team Name"
-            android:textSize="14sp"
-            ></TextView>
+            android:layout_marginLeft="5dp"
+            android:text="frequency text"
+            android:textSize="14sp"></TextView>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="65dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="-35dp"
+            android:layout_marginLeft="320dp"/>
+
 
     </LinearLayout>
 
