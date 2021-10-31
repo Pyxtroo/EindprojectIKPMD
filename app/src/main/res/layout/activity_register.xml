@@ -34,19 +34,21 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="356dp"
         android:onClick="checkRegister"
         android:text="@string/Register"
         app:layout_constraintStart_toEndOf="@+id/button4"
-        tools:layout_editor_absoluteY="358dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="356dp"
         android:onClick="launchLogin"
         android:text="@string/GoBack"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="358dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
