@@ -84,7 +84,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private boolean checkIfValidAndRead() {
-        GoalsList.clear();
+
         boolean result = true;
 
         for(int i=0;i<layoutList.getChildCount();i++){
