@@ -102,4 +102,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, AddGoalActivity.class);
         startActivity(i);
     }
+
+    public void LoadProgressActivity(View s){
+        Intent i = new Intent(this, ProgressActivity.class);
+        startActivity(i);
+    }
 }

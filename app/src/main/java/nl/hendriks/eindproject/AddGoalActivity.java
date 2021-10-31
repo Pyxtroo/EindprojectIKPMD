@@ -20,8 +20,9 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     Button buttonAdd;
     Button buttonDoelToevoegen;
 
-    ArrayList<Goal> GoalsList = new ArrayList<>();
 
+
+    private ArrayList<Goal> GoalsList;
 
 
     List<String> frequencyList = new ArrayList<>();
@@ -35,9 +36,21 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         buttonAdd = findViewById(R.id.button_add);
         buttonDoelToevoegen = findViewById(R.id.ButtonUpdateGoals);
 
+
         buttonAdd.setOnClickListener(this);
         buttonDoelToevoegen.setOnClickListener(this);
 
+        GoalsList = PrefConfig.readList(this);
+
+        System.out.println("test");
+        System.out.println(GoalsList);
+        if(GoalsList == null){
+            GoalsList = new ArrayList<>();
+
+        }
+
+
+        PrefConfig.writeListInPref(getApplicationContext(), GoalsList);
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
 
 
@@ -67,6 +80,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
                     bundle.putSerializable("list", GoalsList);
                     intent.putExtras(bundle);
                     startActivity(intent);
+
 
                 }
                 break;
