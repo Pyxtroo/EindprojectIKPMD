@@ -74,7 +74,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
         }
-        addView();
+
     }
 
 
