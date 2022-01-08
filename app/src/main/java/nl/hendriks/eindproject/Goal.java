@@ -7,15 +7,25 @@ public class Goal implements Serializable {
 
     public String goalName;
     public String goalFrequency;
+    public Boolean goalComplete;
 
     public Goal(){
 
     }
 
 
-    public Goal(String goalName, String goalFrequency){
+    public Goal(String goalName, String goalFrequency, Boolean goalComplete){
         this.goalName = goalName;
         this.goalFrequency = goalFrequency;
+        this.goalComplete = goalComplete;
+    }
+
+    public Boolean getGoalComplete() {
+        return goalComplete;
+    }
+
+    public void setGoalComplete(Boolean goalComplete) {
+        this.goalComplete = goalComplete;
     }
 
     public String getGoalName() {
