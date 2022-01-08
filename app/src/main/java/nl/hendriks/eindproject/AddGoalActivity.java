@@ -3,6 +3,7 @@ package nl.hendriks.eindproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -78,6 +79,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override //wordt gerunt als je op de add button klikt
     public void onClick(View view) {
         switch (view.getId()) {
@@ -122,8 +124,8 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
             View goalView = layoutList.getChildAt(i);
 
-            EditText editTextName = (EditText) goalView.findViewById(R.id.edit_goal_name);
-            AppCompatSpinner spinnerTeam = (AppCompatSpinner) goalView.findViewById(R.id.spinner_team);
+            EditText editTextName = goalView.findViewById(R.id.edit_goal_name);
+            AppCompatSpinner spinnerTeam = goalView.findViewById(R.id.spinner_team);
 
             Goal goal = new Goal();
 
@@ -161,19 +163,14 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal, null, false);
 
 
+        goalView.findViewById(R.id.edit_goal_name);
+        goalView.findViewById(R.id.spinner_team);
+        ImageView imageClose;
+        imageClose = goalView.findViewById(R.id.image_remove);
 
-        EditText editText = (EditText) goalView.findViewById(R.id.edit_goal_name);
-        AppCompatSpinner spinnerTeam = (AppCompatSpinner) goalView.findViewById(R.id.spinner_team);
-        ImageView imageClose = (ImageView) goalView.findViewById(R.id.image_remove);
 
-
-        imageClose.setOnClickListener(new View.OnClickListener() { //word aangeroepen als je op het kruis klikt
-
-            @Override
-            public void onClick(View v) {
-                removeView(goalView);
-            }
-        });
+        //word aangeroepen als je op het kruis klikt
+        imageClose.setOnClickListener(v -> removeView(goalView));
 
         layoutList.addView(goalView);
 
