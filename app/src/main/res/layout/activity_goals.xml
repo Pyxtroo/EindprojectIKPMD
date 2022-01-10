@@ -25,25 +25,38 @@
         android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Add"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        ></Button>
+        android:text="Nieuw doel"
+        android:textAllCaps="false"
+        android:textColor="@color/white"></Button>
 
     <Button
         android:id="@+id/ButtonUpdateGoals"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="367dp"
+        android:layout_height="38dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="Naar huidige doelen"
+        android:textAllCaps="false"
+        android:textColor="@color/white"></Button>
+
+    <Button
+        android:id="@+id/ButtonDeleteGoals"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:onClick="onClick"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Verwijder alle doelen"
         android:textAllCaps="false"
         android:textColor="@color/white"></Button>
 

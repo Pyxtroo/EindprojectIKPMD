@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +31,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
 
     List<String> frequencyList = new ArrayList<>();
-    private ArrayList GoalsList = new ArrayList<Goal>();
+    private ArrayList<Goal> GoalsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,9 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         buttonDoelToevoegen.setOnClickListener(this);
 
 
+
         loadData();
+
 
 
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
@@ -78,9 +81,16 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    private void DeleteData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedpr", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
 
     @SuppressLint("NonConstantResourceId")
-    @Override //wordt gerunt als je op de add button klikt
+    @Override //wordt gerunt als je op button klikt
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -96,7 +106,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
                     Intent intent = new Intent(AddGoalActivity.this, GoalsActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("list", GoalsList);
+                    bundle.putSerializable("list", (Serializable) GoalsList);
                     intent.putExtras(bundle);
 
                     startActivity(intent);
@@ -105,6 +115,10 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
 
+            case R.id.ButtonDeleteGoals:
+                DeleteData();
+                Toast.makeText(this, "Alle doelen zijn verwijderd", Toast.LENGTH_SHORT).show();
+                break;
         }
 
     }
@@ -116,9 +130,13 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    private void loadGoals(){
+
+    }
+
     private boolean checkIfValidAndRead() {
 
-        boolean result = true;
+        boolean canCreateGoal = true;
 
         for (int i = 0; i < layoutList.getChildCount(); i++) {
 
@@ -132,32 +150,44 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
             if (!editTextName.getText().toString().equals("")) {
                 goal.setGoalName(editTextName.getText().toString());
             } else {
-                result = false;
+
+                canCreateGoal = false;
                 break;
             }
 
             if (spinnerTeam.getSelectedItemPosition() != 0) {
                 goal.setGoalFrequency(frequencyList.get(spinnerTeam.getSelectedItemPosition()));
             } else {
-                result = false;
+                canCreateGoal = false;
                 break;
             }
+
+            goal.setGoalComplete(false);
 
             GoalsList.add(goal);
             saveData();
 
         }
 
-        if (GoalsList.size() == 0) {
-            result = false;
-            Toast.makeText(this, "Voer doel in!", Toast.LENGTH_SHORT).show();
-        } else if (!result) {
-            Toast.makeText(this, "Voer alle data correct", Toast.LENGTH_SHORT).show();
+        if (GoalsList == null || GoalsList.size() == 0) {
+            canCreateGoal = false;
+            Toast.makeText(this, "Voer eerst een doel in", Toast.LENGTH_SHORT).show();
+        } else if (!canCreateGoal) {
+            Toast.makeText(this, "Voer alle velden correct in", Toast.LENGTH_SHORT).show();
         }
 
 
-        return result;
+        return canCreateGoal;
     }
+
+
+//    private void getGoals(){
+//        final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal, null, false);
+//        Goal goal =(Goal) GoalsList.get(1);
+//
+//
+//
+//    }
 
     private void addView() {
         final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal, null, false);
@@ -166,6 +196,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         goalView.findViewById(R.id.edit_goal_name);
         goalView.findViewById(R.id.spinner_team);
         ImageView imageClose;
+
         imageClose = goalView.findViewById(R.id.image_remove);
 
 
@@ -173,6 +204,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         imageClose.setOnClickListener(v -> removeView(goalView));
 
         layoutList.addView(goalView);
+
 
     }
 }
