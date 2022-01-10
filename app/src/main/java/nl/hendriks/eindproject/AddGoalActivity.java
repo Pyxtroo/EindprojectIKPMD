@@ -39,18 +39,14 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_goals);
 
         layoutList = findViewById(R.id.layout_list);
-        buttonAdd = findViewById(R.id.button_add);
+        buttonAdd = findViewById(R.id.buttonAddGoal);
         buttonDoelToevoegen = findViewById(R.id.ButtonUpdateGoals);
 
 
         buttonAdd.setOnClickListener(this);
         buttonDoelToevoegen.setOnClickListener(this);
 
-
-
         loadData();
-
-
 
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
 
@@ -89,14 +85,18 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-    @SuppressLint("NonConstantResourceId")
+    public void klikk(){
+        System.out.println("heheheheheheheh");
+    }
+
     @Override //wordt gerunt als je op button klikt
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.button_add:  //voegt view toe als er op de add button wordt geklikt
-
+            case R.id.buttonAddGoal:  //voegt view toe als er op de add button wordt geklikt
+                System.out.println("hehehehehehehe");
                 addView();
+
 
                 break;
 
@@ -119,6 +119,8 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
                 DeleteData();
                 Toast.makeText(this, "Alle doelen zijn verwijderd", Toast.LENGTH_SHORT).show();
                 break;
+
+
         }
 
     }
@@ -190,20 +192,19 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 //    }
 
     private void addView() {
-        final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal, null, false);
-
+        final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal,null,false);
 
         goalView.findViewById(R.id.edit_goal_name);
         goalView.findViewById(R.id.spinner_team);
-        ImageView imageClose;
+        ImageView imageClose = (ImageView)goalView.findViewById(R.id.image_remove);
 
-        imageClose = goalView.findViewById(R.id.image_remove);
-
-
-        //word aangeroepen als je op het kruis klikt
         imageClose.setOnClickListener(v -> removeView(goalView));
 
         layoutList.addView(goalView);
+
+
+
+
 
 
     }

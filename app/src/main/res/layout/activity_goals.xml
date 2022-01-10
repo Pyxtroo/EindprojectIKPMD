@@ -22,11 +22,12 @@
         android:orientation="vertical"></LinearLayout>
 
     <Button
-        android:id="@+id/button_add"
+        android:id="@+id/buttonAddGoal"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
+        android:onClick="onClick"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="Nieuw doel"
