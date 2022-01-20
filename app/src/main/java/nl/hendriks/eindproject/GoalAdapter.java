@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
 
     ArrayList<Goal> GoalsList = new ArrayList<>();
+    private GoalView holder;
 
     public GoalAdapter(ArrayList<Goal> GoalsList) {
         this.GoalsList = GoalsList;
@@ -29,6 +30,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
 
     @Override
     public void onBindViewHolder(@NonNull GoalView holder, int position) {
+        this.holder = holder;
 
         Goal goal = GoalsList.get(position);
         holder.textGoalName.setText(goal.getGoalName());

@@ -1,11 +1,15 @@
 package nl.hendriks.eindproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.github.mikephil.charting.animation.Easing;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
@@ -16,29 +20,32 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-public class ProgressActivity extends AppCompatActivity {
+
+public class Piechart extends Fragment {
 
     private PieChart pieChart;
-    private int aantaldoelen;
-    private int behaaldedoelen;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress);
 
-        pieChart = findViewById(R.id.activity_main_piechart);
-        setupPieChart();
-        LoadPieChartData();
+        if (getArguments() != null) {
+
+        }
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-    private void setupPieChart() {
+        View view = inflater.inflate(R.layout.fragment_piechart, container, false);
+
+
+        PieChart pieChart = (PieChart)view.findViewById(R.id.chart);
         pieChart.setDrawHoleEnabled(true);
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
         pieChart.setEntryLabelColor(Color.BLACK);
-        pieChart.setCenterText("Work done");
+        pieChart.setCenterText("Werk");
         pieChart.setCenterTextSize(24);
         pieChart.getDescription().setEnabled(false);
 
@@ -48,6 +55,35 @@ public class ProgressActivity extends AppCompatActivity {
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
         l.setDrawInside(false);
         l.setEnabled(false);
+        ArrayList<PieEntry> entries = new ArrayList<>();
+//        this.aantaldoelen = aantaldoelen;
+//        this.behaaldedoelen = behaaldedoelen;
+//        int waarde = behaaldedoelen / aantaldoelen * 100;
+
+        entries.add(new PieEntry(50, "Behaald"));
+        entries.add(new PieEntry(50, "Niet behaald"));
+
+        ArrayList<Integer> colors = new ArrayList<>();
+        for (int color: ColorTemplate.MATERIAL_COLORS){
+            colors.add(color);
+        }
+        for (int color: ColorTemplate.VORDIPLOM_COLORS){
+            colors.add(color);
+        }
+
+        PieDataSet dataSet = new PieDataSet(entries, "Work");
+        dataSet.setColors(colors);
+
+        PieData data = new PieData(dataSet);
+        data.setDrawValues(true);
+        data.setValueFormatter(new PercentFormatter(pieChart));
+        data.setValueTextSize(12f);
+        data.setValueTextColor(Color.BLACK);
+
+        pieChart.setData(data);
+        pieChart.invalidate();
+        return view;
+
     }
 
 

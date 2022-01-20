@@ -22,6 +22,16 @@
         android:onClick="LoadAddGoalActivity"
         android:tint="@android:color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
+    
+    <FrameLayout
+        android:id="@+id/Piechart"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"/>
 
-
+    <Button
+        android:id="@+id/FirstFragment"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:text="Progres" />
 </RelativeLayout>
