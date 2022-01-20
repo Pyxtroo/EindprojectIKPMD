@@ -78,7 +78,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
 
     public void setGoalChecked(int position) {
         System.out.println(GoalsList);
-        GoalsList.get(3).setGoalComplete(true);
+        GoalsList.get(position).setGoalComplete(true);
         addGoalActivity.saveData(GoalsList);
     }
 
@@ -100,19 +100,9 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
             textGoalFrequency = (TextView) itemView.findViewById(R.id.text_goal_frequency);
             goalCard = (LinearLayout) itemView.findViewById(R.id.goalCard);
             goalCard.setOnClickListener(this);
-
             view = itemView;
-            CheckBox goalCheck = view.findViewById(R.id.checkBox);
-//            Button button1 = view.findViewById(R.id.button6);
-//
-//            button1.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                            System.out.println("testeerr");
-//
-//
-//                }
-//            });
+
+
 
 
         }
@@ -121,10 +111,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
         @Override
         public void onClick(View view) {
             int position = (int) view.getTag();
-
-            Toast.makeText(view.getContext(), Integer.toString(position), Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "Doel: " + GoalsList.get(position).getGoalName() + " is gechecked.", Toast.LENGTH_SHORT).show();
             setGoalChecked(position);
-
 
         }
 
