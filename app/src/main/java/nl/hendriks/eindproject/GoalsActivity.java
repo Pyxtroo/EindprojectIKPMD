@@ -39,7 +39,7 @@ public class GoalsActivity extends AppCompatActivity {
 
             case R.id.Login:
                 Toast.makeText(this, "Uitgelogd", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, MainActivity.class);
+                Intent i = new Intent(this, loginActivity.class);
                 startActivity(i);
                 return true;
         }

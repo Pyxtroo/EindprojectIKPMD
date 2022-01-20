@@ -1,9 +1,13 @@
 package nl.hendriks.eindproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,14 +41,13 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_goals);
 
         layoutList = findViewById(R.id.layout_list);
-        buttonAdd = findViewById(R.id.button_add);
+        buttonAdd = findViewById(R.id.buttonAddGoal);
         buttonDoelToevoegen = findViewById(R.id.ButtonUpdateGoals);
 
 
         buttonAdd.setOnClickListener(this);
         buttonDoelToevoegen.setOnClickListener(this);
 
-        GoalsList = PrefConfig.readList(this);
 
         System.out.println("test");
         System.out.println(GoalsList);
@@ -54,7 +57,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         }
 
 
-        PrefConfig.writeListInPref(getApplicationContext(), GoalsList);
+
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
 
 
@@ -68,7 +71,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.button_add:
+            case R.id.buttonAddGoal:
 
                 addView();
 
@@ -105,7 +108,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         switch (item.getItemId()){
             case R.id.Login:
                 Toast.makeText(this, "Uitgelogd", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, MainActivity.class);
+                Intent i = new Intent(this, loginActivity.class);
                 startActivity(i);
                 return true;
         }
