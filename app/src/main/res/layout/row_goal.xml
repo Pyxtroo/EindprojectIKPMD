@@ -5,10 +5,11 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:backgroundTint="#BEC3BF"
-    app:cardBackgroundColor="@color/teal_700">
+    app:cardBackgroundColor="@color/teal_700"
+    >
 
     <LinearLayout
-        android:id="@+id/checkboxGoal"
+        android:id="@+id/goalCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="#FFFFFF"

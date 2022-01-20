@@ -1,11 +1,14 @@
 package nl.hendriks.eindproject;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,24 +16,34 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.Serializable;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
 
-    ArrayList<Goal> GoalsList = new ArrayList<>();
+    ArrayList<Goal> GoalsList;
     private GoalView holder;
 
-    public GoalAdapter(ArrayList<Goal> GoalsList) {
+    private SharedPreferences sharedPreferences;
+    AddGoalActivity addGoalActivity;
+
+
+    public GoalAdapter(ArrayList<Goal> GoalsList, Context context) {
         this.GoalsList = GoalsList;
+        addGoalActivity = new AddGoalActivity(context);
     }
+
+
+
 
     @NonNull
     @Override
     public GoalView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_goal,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_goal, parent, false);
 
         return new GoalView(view);
     }
@@ -42,6 +55,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
         Goal goal = GoalsList.get(position);
         holder.textGoalName.setText(goal.getGoalName());
         holder.textGoalFrequency.setText(goal.getGoalFrequency());
+        holder.goalCard.setTag(position);
 
 
     }
@@ -49,6 +63,26 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
     @Override
     public int getItemCount() {
         return GoalsList.size();
+
+    }
+
+    public Goal getItem(int position) {
+        System.out.println("times");
+        return GoalsList.get(position);
+    }
+
+    public Integer getPosition(View view) {
+        int position = (int) view.getTag();
+        System.out.println("positie is: " + position);
+        return position;
+    }
+
+
+
+    public void setGoalChecked(int position) {
+        System.out.println(GoalsList);
+        GoalsList.get(position).setGoalComplete(true);
+        addGoalActivity.saveData(GoalsList);
     }
 
     public class GoalView extends RecyclerView.ViewHolder{
@@ -56,21 +90,38 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
 
         String convertedToString = String.valueOf(GoalsList);
         TextView textGoalName, textGoalFrequency;
-        LinearLayout checkGoalChecked;
+        LinearLayout goalCard;
+        public View view;
+        CheckBox goalCheck;
+        AddGoalActivity addGoalActivity;
+        GoalAdapter goalAdapter;
 
 
         public GoalView(@NonNull View itemView) {
             super(itemView);
-            textGoalName = (TextView)itemView.findViewById(R.id.text_goal_name);
-            textGoalFrequency = (TextView)itemView.findViewById(R.id.text_goal_frequency);
+            textGoalName = (TextView) itemView.findViewById(R.id.text_goal_name);
+            textGoalFrequency = (TextView) itemView.findViewById(R.id.text_goal_frequency);
+            goalCard = (LinearLayout) itemView.findViewById(R.id.goalCard);
+            goalCard.setOnClickListener(this);
+            view = itemView;
+
+
 
 
         }
 
 
-        public void checkGoal(){
+        @Override
+        public void onClick(View view) {
+            int position = (int) view.getTag();
+            Toast.makeText(view.getContext(), "Doel: " + GoalsList.get(position).getGoalName() + " is gechecked.", Toast.LENGTH_SHORT).show();
+            setGoalChecked(position);
 
         }
+
+
     }
 
+
 }
+

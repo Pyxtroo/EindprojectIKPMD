@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,28 +25,7 @@ public class GoalsActivity extends AppCompatActivity {
 
     RecyclerView recyclerGoals;
     ArrayList<Goal> GoalsList = new ArrayList<>();
-    Button firstFragmentbtn;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-
-            case R.id.Login:
-                Toast.makeText(this, "Uitgelogd", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, loginActivity.class);
-                startActivity(i);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
+    Button buttontest;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +38,7 @@ public class GoalsActivity extends AppCompatActivity {
 
         GoalsList = (ArrayList<Goal>) getIntent().getExtras().getSerializable("list");
 
-        recyclerGoals.setAdapter(new GoalAdapter(GoalsList));
+        recyclerGoals.setAdapter(new GoalAdapter(GoalsList, getApplicationContext()));
 
         firstFragmentbtn = findViewById(R.id.FirstFragment);
 
@@ -88,4 +68,5 @@ public class GoalsActivity extends AppCompatActivity {
         startActivity(i);
 
     }
+
 }
