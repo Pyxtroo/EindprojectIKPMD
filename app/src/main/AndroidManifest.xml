@@ -16,21 +16,20 @@
         <activity
             android:name=".AddGoalActivity"
             android:exported="true"
-            android:label="Doel toevoegen"/>
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="true"
-            android:label="Registeren"/>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:label="Doel toevoegen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true"
+            android:label="Registeren" />
+        <activity
+            android:name=".loginActivity"
+            android:exported="true">
         </activity>
 
         <activity

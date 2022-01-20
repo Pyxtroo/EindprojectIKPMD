@@ -1,14 +1,21 @@
 package nl.hendriks.eindproject;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
 
@@ -46,12 +53,22 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
 
     public class GoalView extends RecyclerView.ViewHolder{
 
+
+        String convertedToString = String.valueOf(GoalsList);
         TextView textGoalName, textGoalFrequency;
+        LinearLayout checkGoalChecked;
+
+
         public GoalView(@NonNull View itemView) {
             super(itemView);
-
             textGoalName = (TextView)itemView.findViewById(R.id.text_goal_name);
             textGoalFrequency = (TextView)itemView.findViewById(R.id.text_goal_frequency);
+
+
+        }
+
+
+        public void checkGoal(){
 
         }
     }

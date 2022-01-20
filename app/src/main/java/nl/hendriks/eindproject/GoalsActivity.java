@@ -86,5 +86,6 @@ public class GoalsActivity extends AppCompatActivity {
     public void LoadAddGoalActivity(View x){
         Intent i = new Intent(this, AddGoalActivity.class);
         startActivity(i);
+
     }
 }

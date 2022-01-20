@@ -1,13 +1,9 @@
 package nl.hendriks.eindproject;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,29 +20,14 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     Button buttonAdd;
     Button buttonDoelToevoegen;
 
+
+
     private ArrayList<Goal> GoalsList;
 
 
     List<String> frequencyList = new ArrayList<>();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.Login:
-                Toast.makeText(this, "Uitgelogd", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 
 
@@ -73,15 +54,12 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         }
 
 
-
-
         PrefConfig.writeListInPref(getApplicationContext(), GoalsList);
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
 
 
-
-
     }
+
 
 
 
@@ -113,6 +91,25 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.navigation_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.Login:
+                Toast.makeText(this, "Uitgelogd", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

@@ -8,6 +8,7 @@
     app:cardBackgroundColor="@color/teal_700">
 
     <LinearLayout
+        android:id="@+id/checkboxGoal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="#FFFFFF"
@@ -38,7 +39,9 @@
             android:layout_height="24dp"
             android:layout_marginLeft="320dp"
             android:layout_marginTop="-35dp"
-            android:buttonTint="#37C83A" />
+            android:buttonTint="#37C83A"
+            android:checked="false"
+            android:clickable="false" />
 
 
     </LinearLayout>

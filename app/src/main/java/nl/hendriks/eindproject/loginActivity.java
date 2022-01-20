@@ -7,27 +7,19 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.util.Log;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class MainActivity extends AppCompatActivity {
+public class loginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     public static final String TAG = "YOUR-TAG-NAME";
@@ -77,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(MainActivity.this, "user logged in succesful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, AddGoalActivity.class));
+                        Toast.makeText(loginActivity.this, "user logged in succesful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(loginActivity.this, AddGoalActivity.class));
 
                     }else{
-                        Toast.makeText(MainActivity.this, "user loggin failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(loginActivity.this, "user loggin failed", Toast.LENGTH_SHORT).show();
 
                     }
                 }
