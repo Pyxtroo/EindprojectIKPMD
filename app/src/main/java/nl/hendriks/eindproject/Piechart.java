@@ -40,7 +40,7 @@ public class Piechart extends Fragment {
         View view = inflater.inflate(R.layout.fragment_piechart, container, false);
 
 
-        PieChart pieChart = (PieChart)view.findViewById(R.id.chart);
+        PieChart pieChart = (PieChart) view.findViewById(R.id.chart);
         pieChart.setDrawHoleEnabled(true);
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
@@ -64,10 +64,10 @@ public class Piechart extends Fragment {
         entries.add(new PieEntry(50, "Niet behaald"));
 
         ArrayList<Integer> colors = new ArrayList<>();
-        for (int color: ColorTemplate.MATERIAL_COLORS){
+        for (int color : ColorTemplate.MATERIAL_COLORS) {
             colors.add(color);
         }
-        for (int color: ColorTemplate.VORDIPLOM_COLORS){
+        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
             colors.add(color);
         }
 
@@ -87,7 +87,7 @@ public class Piechart extends Fragment {
     }
 
 
-    private void LoadPieChartData(){
+    private void LoadPieChartData() {
         ArrayList<PieEntry> entries = new ArrayList<>();
 //        this.aantaldoelen = aantaldoelen;
 //        this.behaaldedoelen = behaaldedoelen;
@@ -97,10 +97,10 @@ public class Piechart extends Fragment {
         entries.add(new PieEntry(50, "not done"));
 
         ArrayList<Integer> colors = new ArrayList<>();
-        for (int color: ColorTemplate.MATERIAL_COLORS){
+        for (int color : ColorTemplate.MATERIAL_COLORS) {
             colors.add(color);
         }
-        for (int color: ColorTemplate.VORDIPLOM_COLORS){
+        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
             colors.add(color);
         }
 

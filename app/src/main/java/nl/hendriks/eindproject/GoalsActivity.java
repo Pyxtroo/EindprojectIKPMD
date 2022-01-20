@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +25,29 @@ public class GoalsActivity extends AppCompatActivity {
     RecyclerView recyclerGoals;
     ArrayList<Goal> GoalsList = new ArrayList<>();
     Button buttontest;
+
+    Button firstFragmentbtn;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.navigation_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.Login:
+                Toast.makeText(this, "Uitgelogd", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, loginActivity.class);
+                startActivity(i);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +55,7 @@ public class GoalsActivity extends AppCompatActivity {
 
         recyclerGoals = findViewById(R.id.recycler_doelen);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         recyclerGoals.setLayoutManager(layoutManager);
 
         GoalsList = (ArrayList<Goal>) getIntent().getExtras().getSerializable("list");
@@ -56,14 +78,13 @@ public class GoalsActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.Piechart,fragment);
+        fragmentTransaction.replace(R.id.Piechart, fragment);
         fragmentTransaction.commit();
-
 
 
     }
 
-    public void LoadAddGoalActivity(View x){
+    public void LoadAddGoalActivity(View x) {
         Intent i = new Intent(this, AddGoalActivity.class);
         startActivity(i);
 

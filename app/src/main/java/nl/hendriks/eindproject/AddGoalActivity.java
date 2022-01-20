@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatSpinner;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,7 +41,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
     public AddGoalActivity(Context context) {
         sharedPreferences = context.getSharedPreferences(
-                "sharedpr" , Context.MODE_PRIVATE);
+                "sharedpr", Context.MODE_PRIVATE);
     }
 
     public AddGoalActivity() {
@@ -48,13 +49,12 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals);
         sharedPreferences = getSharedPreferences(
-                "sharedpr" , Context.MODE_PRIVATE);
+                "sharedpr", Context.MODE_PRIVATE);
 
         layoutList = findViewById(R.id.layout_list);
         buttonAdd = findViewById(R.id.buttonAddGoal);
@@ -67,11 +67,6 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         loadData();
 
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
-
-
-
-
-
 
 
     }
@@ -102,15 +97,11 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-
-    private void DeleteData(){
-
+    private void DeleteData() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
     }
-
-
 
 
     @Override //wordt gerunt als je op button klikt
@@ -154,7 +145,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private void loadGoals(){
+    private void loadGoals() {
 
     }
 
@@ -214,24 +205,20 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 //    }
 
     private void addView() {
-        final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal,null,false);
+        final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal, null, false);
 
         goalView.findViewById(R.id.edit_goal_name);
         goalView.findViewById(R.id.spinner_team);
-        ImageView imageClose = (ImageView)goalView.findViewById(R.id.image_remove);
+        ImageView imageClose = (ImageView) goalView.findViewById(R.id.image_remove);
 
         imageClose.setOnClickListener(v -> removeView(goalView));
 
         layoutList.addView(goalView);
 
 
-
-
-
-
     }
 
-    public void setGoalChecked(int position){
+    public void setGoalChecked(int position) {
         loadData();
         GoalsList.get(position).goalComplete = true;
         System.out.println("method aangeroepen: " + GoalsList);

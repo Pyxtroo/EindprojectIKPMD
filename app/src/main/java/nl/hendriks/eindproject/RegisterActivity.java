@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegisterActivity extends AppCompatActivity {
 
 
-
     FirebaseAuth mAuth;
     Button btnRegister;
     TextView etRegEmail;
@@ -41,32 +40,30 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void createUser(){
+    private void createUser() {
         String email = etRegEmail.getText().toString();
         String password = etRegPassword.getText().toString();
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             etRegEmail.setError("email cannot be empty");
             etRegEmail.requestFocus();
-        }else if(TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             etRegPassword.setError("password cannot be empty");
             etRegPassword.requestFocus();
-        }else{
+        } else {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Toast.makeText(RegisterActivity.this, "user registered succesful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterActivity.this, test.class));
-                    }else{
+                    } else {
                         Toast.makeText(RegisterActivity.this, "user registered unsuccesful", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
     }
-
-
 
 
 }
