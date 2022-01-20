@@ -3,6 +3,7 @@ package nl.hendriks.eindproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ public class GoalsActivity extends AppCompatActivity {
 
     RecyclerView recyclerGoals;
     ArrayList<Goal> GoalsList = new ArrayList<>();
+    Button buttontest;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class GoalsActivity extends AppCompatActivity {
 
         GoalsList = (ArrayList<Goal>) getIntent().getExtras().getSerializable("list");
 
-        recyclerGoals.setAdapter(new GoalAdapter(GoalsList));
+        recyclerGoals.setAdapter(new GoalAdapter(GoalsList, getApplicationContext()));
 
     }
 
@@ -36,4 +38,5 @@ public class GoalsActivity extends AppCompatActivity {
         startActivity(i);
 
     }
+
 }

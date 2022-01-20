@@ -3,7 +3,7 @@ package nl.hendriks.eindproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,19 +31,33 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
 
     List<String> frequencyList = new ArrayList<>();
-    private ArrayList<Goal> GoalsList;
+    public ArrayList<Goal> GoalsList;
+
+    private SharedPreferences sharedPreferences;
+
+    public AddGoalActivity(Context context) {
+        sharedPreferences = context.getSharedPreferences(
+                "sharedpr" , Context.MODE_PRIVATE);
+    }
+
+    public AddGoalActivity() {
+
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals);
+        sharedPreferences = getSharedPreferences(
+                "sharedpr" , Context.MODE_PRIVATE);
 
         layoutList = findViewById(R.id.layout_list);
         buttonAdd = findViewById(R.id.buttonAddGoal);
         buttonDoelToevoegen = findViewById(R.id.ButtonUpdateGoals);
 
-
-        buttonAdd.setOnClickListener(this);
+        buttonAdd.setOnClickListener(this); //hierdoor hoef je in de xml geen onclick aan te roepen
         buttonDoelToevoegen.setOnClickListener(this);
 
         loadData();
@@ -51,21 +65,25 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
 
 
+
+
+
+
+
     }
 
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("sharedpr", MODE_PRIVATE);
+    public void saveData(ArrayList<Goal> goalsList) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(GoalsList);
-        editor.putString("task list", json);
+        String json = gson.toJson(goalsList);
+        editor.putString("tasklist", json);
         editor.apply();
     }
 
-    private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("sharedpr", MODE_PRIVATE);
+    public ArrayList<Goal> loadData() {
+
         Gson gson = new Gson();
-        String json = sharedPreferences.getString("task list", null);
+        String json = sharedPreferences.getString("tasklist", null);
         Type type = new TypeToken<ArrayList<Goal>>() {
         }.getType();
         GoalsList = gson.fromJson(json, type);
@@ -74,27 +92,28 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
             GoalsList = new ArrayList<Goal>();
         }
 
+        return GoalsList;
+
 
     }
 
+
+
     private void DeleteData(){
-        SharedPreferences sharedPreferences = getSharedPreferences("sharedpr", MODE_PRIVATE);
+
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
     }
 
 
-    public void klikk(){
-        System.out.println("heheheheheheheh");
-    }
+
 
     @Override //wordt gerunt als je op button klikt
     public void onClick(View view) {
         switch (view.getId()) {
 
             case R.id.buttonAddGoal:  //voegt view toe als er op de add button wordt geklikt
-                System.out.println("hehehehehehehe");
                 addView();
 
 
@@ -119,7 +138,6 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
                 DeleteData();
                 Toast.makeText(this, "Alle doelen zijn verwijderd", Toast.LENGTH_SHORT).show();
                 break;
-
 
         }
 
@@ -167,7 +185,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
             goal.setGoalComplete(false);
 
             GoalsList.add(goal);
-            saveData();
+            saveData(GoalsList);
 
         }
 
@@ -207,5 +225,11 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
+    }
+
+    public void setGoalChecked(int position){
+        loadData();
+        GoalsList.get(position).goalComplete = true;
+        System.out.println("method aangeroepen: " + GoalsList);
     }
 }
