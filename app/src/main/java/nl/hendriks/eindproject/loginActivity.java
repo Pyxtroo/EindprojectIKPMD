@@ -44,35 +44,36 @@ public class loginActivity extends AppCompatActivity {
 
 
     }
+
     public void onStart() {
         super.onStart();
 
         FirebaseUser user = mAuth.getCurrentUser();
-        if(user == null){
+        if (user == null) {
 
         }
     }
 
 
-    private void loginUser(){
+    private void loginUser() {
         String email = etLoginEmail.getText().toString();
         String password = etLoginPassword.getText().toString();
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             etLoginEmail.setError("email cannot be empty");
             etLoginEmail.requestFocus();
-        }else if(TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             etLoginPassword.setError("password cannot be empty");
             etLoginPassword.requestFocus();
-        }else{
+        } else {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Toast.makeText(loginActivity.this, "user logged in succesful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(loginActivity.this, AddGoalActivity.class));
 
-                    }else{
+                    } else {
                         Toast.makeText(loginActivity.this, "user loggin failed", Toast.LENGTH_SHORT).show();
 
                     }
@@ -85,12 +86,12 @@ public class loginActivity extends AppCompatActivity {
 
     }
 
-    public void loadRegisterScreen(View y){
+    public void loadRegisterScreen(View y) {
         Intent i = new Intent(this, RegisterActivity.class);
         startActivity(i);                           // laad pagina i
     }
 
-    public void LoadAddGoalActivity(View x){
+    public void LoadAddGoalActivity(View x) {
         Intent i = new Intent(this, AddGoalActivity.class);
         startActivity(i);
     }

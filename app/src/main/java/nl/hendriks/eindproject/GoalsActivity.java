@@ -70,7 +70,7 @@ public class GoalsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                replaceFragment(new Piechart(GoalsList,getApplicationContext()));
+                replaceFragment(new Piechart(GoalsList, getApplicationContext()));
 
             }
         });
@@ -81,7 +81,6 @@ public class GoalsActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.Piechart, fragment);
         fragmentTransaction.commit();
-
 
     }
 

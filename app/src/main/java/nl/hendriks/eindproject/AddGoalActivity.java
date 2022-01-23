@@ -1,26 +1,20 @@
 package nl.hendriks.eindproject;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -32,7 +26,6 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     LinearLayout layoutList;
     Button buttonAdd;
     Button buttonDoelToevoegen;
-
 
     List<String> frequencyList = new ArrayList<>();
     public ArrayList<Goal> GoalsList;
@@ -67,7 +60,6 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         loadData();
 
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
-
 
 
     }
@@ -105,19 +97,17 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-    @Override //wordt gerunt als je op button klikt
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.buttonAddGoal:  //voegt view toe als er op de add button wordt geklikt
+            case R.id.buttonAddGoal:
                 addView();
-
-
                 break;
 
-            case R.id.ButtonUpdateGoals: //als data klopt wordt er een nieuwe view gemaakt
+            case R.id.ButtonUpdateGoals:
 
-                if (checkIfValidAndRead()) {
+                if (checkIfGoalValidAndCreate()) {
 
                     Intent intent = new Intent(AddGoalActivity.this, GoalsActivity.class);
                     Bundle bundle = new Bundle();
@@ -146,11 +136,8 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private void loadGoals() {
 
-    }
-
-    private boolean checkIfValidAndRead() {
+    private boolean checkIfGoalValidAndCreate() {
 
         boolean canCreateGoal = true;
 
@@ -192,18 +179,9 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
             Toast.makeText(this, "Voer alle velden correct in", Toast.LENGTH_SHORT).show();
         }
 
-
         return canCreateGoal;
     }
 
-
-//    private void getGoals(){
-//        final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal, null, false);
-//        Goal goal =(Goal) GoalsList.get(1);
-//
-//
-//
-//    }
 
     private void addView() {
         final View goalView = getLayoutInflater().inflate(R.layout.rij_add_goal, null, false);
@@ -216,12 +194,6 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
 
         layoutList.addView(goalView);
 
-
     }
 
-    public void setGoalChecked(int position) {
-        loadData();
-        GoalsList.get(position).goalComplete = true;
-        System.out.println("method aangeroepen: " + GoalsList);
-    }
 }

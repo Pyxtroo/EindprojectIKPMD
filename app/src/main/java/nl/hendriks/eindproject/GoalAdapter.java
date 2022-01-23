@@ -18,16 +18,17 @@ import java.util.ArrayList;
 
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
 
-    ArrayList<Goal> GoalsList;
+
     private GoalView holder;
 
     private SharedPreferences sharedPreferences;
     AddGoalActivity addGoalActivity;
-
+    ArrayList<Goal> GoalsList;
 
     public GoalAdapter(ArrayList<Goal> GoalsList, Context context) {
         this.GoalsList = GoalsList;
         addGoalActivity = new AddGoalActivity(context);
+
     }
 
 
@@ -35,7 +36,6 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
     @Override
     public GoalView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_goal, parent, false);
-
         return new GoalView(view);
     }
 
@@ -54,7 +54,6 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
     @Override
     public int getItemCount() {
         return GoalsList.size();
-
     }
 
     public Goal getItem(int position) {
@@ -92,18 +91,16 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.GoalView> {
             goalCard.setOnClickListener(this);
             view = itemView;
 
-
         }
 
 
         public void onClick(View view) {
             int position = (int) view.getTag();
-            Toast.makeText(view.getContext(), "Doel: " + GoalsList.get(position).getGoalName() + " is gechecked.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(),
+                    "Doel: " + GoalsList.get(position).getGoalName() + " is gechecked.", Toast.LENGTH_SHORT).show();
             setGoalChecked(position);
 
         }
-
-
     }
 
 

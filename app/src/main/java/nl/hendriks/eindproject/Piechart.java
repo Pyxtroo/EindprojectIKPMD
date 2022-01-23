@@ -3,9 +3,6 @@ package nl.hendriks.eindproject;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -27,7 +24,6 @@ public class Piechart extends Fragment {
 
     private PieChart pieChart;
 
-
     ArrayList<Goal> goalsList;
     AddGoalActivity addGoalActivity;
 
@@ -48,7 +44,6 @@ public class Piechart extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -60,7 +55,7 @@ public class Piechart extends Fragment {
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
         pieChart.setEntryLabelColor(Color.BLACK);
-        pieChart.setCenterText("Werk");
+        pieChart.setCenterText("Doelen");
         pieChart.setCenterTextSize(24);
         pieChart.getDescription().setEnabled(false);
 
@@ -74,12 +69,12 @@ public class Piechart extends Fragment {
 
 
         int goalsChecked = 0;
-        int goalsNotChecked= 0;
+        int goalsNotChecked = 0;
 
-        for(int i = 0;i < goalsList.size(); i++){
-            if(goalsList.get(i).goalComplete == true){
+        for (int i = 0; i < goalsList.size(); i++) {
+            if (goalsList.get(i).goalComplete == true) {
                 goalsChecked++;
-            }else{
+            } else {
                 goalsNotChecked++;
             }
         }
@@ -110,8 +105,6 @@ public class Piechart extends Fragment {
         return view;
 
     }
-
-
 
 
 }
