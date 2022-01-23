@@ -69,6 +69,7 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         frequencyList = Arrays.asList(getResources().getStringArray(R.array.Repeat_Goal));
 
 
+
     }
 
     public void saveData(ArrayList<Goal> goalsList) {

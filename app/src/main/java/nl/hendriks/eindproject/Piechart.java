@@ -1,9 +1,11 @@
 package nl.hendriks.eindproject;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -25,6 +27,17 @@ public class Piechart extends Fragment {
 
     private PieChart pieChart;
 
+
+    ArrayList<Goal> goalsList;
+    AddGoalActivity addGoalActivity;
+
+    public Piechart(ArrayList<Goal> GoalsList, Context context) {
+        this.goalsList = GoalsList;
+        addGoalActivity = new AddGoalActivity(context);
+
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +46,8 @@ public class Piechart extends Fragment {
 
         }
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,12 +71,22 @@ public class Piechart extends Fragment {
         l.setDrawInside(false);
         l.setEnabled(false);
         ArrayList<PieEntry> entries = new ArrayList<>();
-//        this.aantaldoelen = aantaldoelen;
-//        this.behaaldedoelen = behaaldedoelen;
-//        int waarde = behaaldedoelen / aantaldoelen * 100;
 
-        entries.add(new PieEntry(50, "Behaald"));
-        entries.add(new PieEntry(50, "Niet behaald"));
+
+        int goalsChecked = 0;
+        int goalsNotChecked= 0;
+
+        for(int i = 0;i < goalsList.size(); i++){
+            if(goalsList.get(i).goalComplete == true){
+                goalsChecked++;
+            }else{
+                goalsNotChecked++;
+            }
+        }
+
+
+        entries.add(new PieEntry(goalsChecked, "Behaald"));
+        entries.add(new PieEntry(goalsNotChecked, "Niet behaald"));
 
         ArrayList<Integer> colors = new ArrayList<>();
         for (int color : ColorTemplate.MATERIAL_COLORS) {
@@ -87,35 +112,6 @@ public class Piechart extends Fragment {
     }
 
 
-    private void LoadPieChartData() {
-        ArrayList<PieEntry> entries = new ArrayList<>();
-//        this.aantaldoelen = aantaldoelen;
-//        this.behaaldedoelen = behaaldedoelen;
-//        int waarde = behaaldedoelen / aantaldoelen * 100;
 
-        entries.add(new PieEntry(50, "done"));
-        entries.add(new PieEntry(50, "not done"));
-
-        ArrayList<Integer> colors = new ArrayList<>();
-        for (int color : ColorTemplate.MATERIAL_COLORS) {
-            colors.add(color);
-        }
-        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
-            colors.add(color);
-        }
-
-        PieDataSet dataSet = new PieDataSet(entries, "Work");
-        dataSet.setColors(colors);
-
-        PieData data = new PieData(dataSet);
-        data.setDrawValues(true);
-        data.setValueFormatter(new PercentFormatter(pieChart));
-        data.setValueTextSize(12f);
-        data.setValueTextColor(Color.BLACK);
-
-        pieChart.setData(data);
-        pieChart.invalidate();
-
-    }
 
 }

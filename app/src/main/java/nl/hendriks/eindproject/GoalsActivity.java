@@ -28,6 +28,7 @@ public class GoalsActivity extends AppCompatActivity {
 
     Button firstFragmentbtn;
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -69,7 +70,7 @@ public class GoalsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                replaceFragment(new Piechart());
+                replaceFragment(new Piechart(GoalsList,getApplicationContext()));
 
             }
         });
